@@ -17,30 +17,35 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-       
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image.asset('assets/splashScreen.png'),
+                CircleAvatar(
+                  radius: 100,
+                  backgroundImage: AssetImage('assets/splashScreen.png'),
                 ),
-                SizedBox(height: 20,),
+
+                SizedBox(height: 20),
                 Text(
                   'Sign Up',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.orange.shade800,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 30),
 
                 TextFormField(
                   controller: _emailCTRL,
+                  style: TextStyle(color: Colors.white),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: "Enter your email",
+
                     labelStyle: TextStyle(color: Colors.grey),
                     filled: true,
                     prefixIcon: Icon(Icons.email, color: Colors.grey),
@@ -55,6 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(height: 20),
                 TextFormField(
                   controller: _passwordCTRL,
+                  style: TextStyle(color: Colors.white),
                   obscureText: true,
                   // keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -63,10 +69,13 @@ class _SignUpPageState extends State<SignUpPage> {
                     labelStyle: TextStyle(color: Colors.grey),
                     filled: true,
                     fillColor: Colors.grey.withAlpha(65),
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: Icon(Icons.lock, color: Colors.grey),
                     suffixIcon: GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.remove_red_eye_outlined),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: Colors.grey,
+                      ),
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -87,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Colors.orange.shade800,
                       foregroundColor: Colors.white,
                     ),
                     child: Row(
@@ -119,7 +128,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            backgroundColor: Colors.orange,
+                            backgroundColor: Colors.orange.shade800,
                             foregroundColor: Colors.white,
                           ),
                           child: Text('Sign Up'),
@@ -129,7 +138,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Have an Account?"),
+                    Text(
+                      "Have an Account?",
+                      style: TextStyle(color: Colors.white),
+                    ),
 
                     TextButton(
                       onPressed: _onTapSignIn,

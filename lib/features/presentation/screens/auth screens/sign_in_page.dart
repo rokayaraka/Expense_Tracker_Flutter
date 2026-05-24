@@ -20,33 +20,32 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-       
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 250,
-                  width: 250,
-                  child: Image.asset('assets/splashScreen.png',
-                  fit: BoxFit.cover,
-                  
-                  ),
+                CircleAvatar(
+                  radius: 100,
+                  backgroundImage: AssetImage('assets/splashScreen.png'),
                 ),
-                SizedBox(height: 20,),
+
+                SizedBox(height: 20),
                 Text(
                   'Sign In',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25, fontWeight: FontWeight.bold),
+                    color: Colors.orange.shade800,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 30),
 
                 TextFormField(
                   controller: _emailCTRL,
                   keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: "Enter your email",
                     labelStyle: TextStyle(color: Colors.grey),
@@ -64,16 +63,20 @@ class _SigninPageState extends State<SigninPage> {
                 TextFormField(
                   controller: _passwordCTRL,
                   obscureText: true,
+                  style: TextStyle(color: Colors.white),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: "Enter your Password",
                     labelStyle: TextStyle(color: Colors.grey),
                     filled: true,
                     fillColor: Colors.grey.withAlpha(65),
-                    prefixIcon: Icon(Icons.lock,color: Colors.grey),
+                    prefixIcon: Icon(Icons.lock, color: Colors.grey),
                     suffixIcon: GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.remove_red_eye_outlined,color: Colors.grey),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: Colors.grey,
+                      ),
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -91,7 +94,7 @@ class _SigninPageState extends State<SigninPage> {
                       child: Text(
                         'Forget Password?',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.orange.shade800,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -109,7 +112,7 @@ class _SigninPageState extends State<SigninPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.blueAccent,
+                      backgroundColor: Colors.orange.shade800,
                       foregroundColor: Colors.white,
                     ),
                     child: Row(
@@ -131,7 +134,7 @@ class _SigninPageState extends State<SigninPage> {
                   child: loader
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.blueAccent,
+                            color: Colors.orange,
                           ),
                         )
                       : ElevatedButton(
@@ -141,7 +144,7 @@ class _SigninPageState extends State<SigninPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: Colors.orange.shade800,
                             foregroundColor: Colors.white,
                           ),
                           child: Text('Sign In'),
@@ -151,16 +154,16 @@ class _SigninPageState extends State<SigninPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't Have an Account?",style: 
-                    TextStyle(
-                      color: Colors.white
-                    ),),
+                    Text(
+                      "Don't Have an Account?",
+                      style: TextStyle(color: Colors.white),
+                    ),
 
                     TextButton(
                       onPressed: _onTapSignUp,
                       child: Text(
                         'Sign Up',
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: Colors.orange.shade800),
                       ),
                     ),
                   ],
@@ -195,12 +198,16 @@ class _SigninPageState extends State<SigninPage> {
     });
   }
 
-
-  void _onTapForgetPassword(){
-    Navigator.push(context, PageTransition(
-      child: ForgetPasswordPage(),
-      type: PageTransitionType.fade));
+  void _onTapForgetPassword() {
+    Navigator.push(
+      context,
+      PageTransition(
+        child: ForgetPasswordPage(),
+        type: PageTransitionType.fade,
+      ),
+    );
   }
+
   void _clearControllers() {
     _emailCTRL.clear();
     _passwordCTRL.clear();

@@ -71,7 +71,7 @@ class AuthServices {
   static void showSnackBar(String massage, BuildContext context) {
     final snackBar = SnackBar(
       content: Text(massage, style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.orange.shade800,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(seconds: 3),
     );
