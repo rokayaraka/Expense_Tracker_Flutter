@@ -1,0 +1,215 @@
+import 'package:expanse_tracker_app/application/services/auth_services.dart';
+import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/forget_passwrod_page.dart';
+import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/sign_up_page.dart';
+import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+
+class SigninPage extends StatefulWidget {
+  const SigninPage({super.key});
+
+  @override
+  State<SigninPage> createState() => _SigninPageState();
+}
+
+class _SigninPageState extends State<SigninPage> {
+  final TextEditingController _emailCTRL = TextEditingController();
+  final TextEditingController _passwordCTRL = TextEditingController();
+
+  bool loader = false;
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+       
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 250,
+                  width: 250,
+                  child: Image.asset('assets/splashScreen.png',
+                  fit: BoxFit.cover,
+                  
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Text(
+                  'Sign In',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 30),
+
+                TextFormField(
+                  controller: _emailCTRL,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: "Enter your email",
+                    labelStyle: TextStyle(color: Colors.grey),
+                    filled: true,
+                    prefixIcon: Icon(Icons.email, color: Colors.grey),
+                    fillColor: Colors.grey.withAlpha(65),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    enabled: true,
+                  ),
+                ),
+                SizedBox(height: 20),
+                TextFormField(
+                  controller: _passwordCTRL,
+                  obscureText: true,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: "Enter your Password",
+                    labelStyle: TextStyle(color: Colors.grey),
+                    filled: true,
+                    fillColor: Colors.grey.withAlpha(65),
+                    prefixIcon: Icon(Icons.lock,color: Colors.grey),
+                    suffixIcon: GestureDetector(
+                      onTap: () {},
+                      child: Icon(Icons.remove_red_eye_outlined,color: Colors.grey),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    enabled: true,
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: _onTapForgetPassword,
+                      child: Text(
+                        'Forget Password?',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      backgroundColor: Colors.blueAccent,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/google-logo.webp'),
+                        SizedBox(width: 10),
+
+                        Text('Continue With Google'),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: loader
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.blueAccent,
+                          ),
+                        )
+                      : ElevatedButton(
+                          onPressed: _onTapSignIn,
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            backgroundColor: Colors.blueAccent,
+                            foregroundColor: Colors.white,
+                          ),
+                          child: Text('Sign In'),
+                        ),
+                ),
+                // SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't Have an Account?",style: 
+                    TextStyle(
+                      color: Colors.white
+                    ),),
+
+                    TextButton(
+                      onPressed: _onTapSignUp,
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _onTapSignUp() {
+    Navigator.push(
+      (context),
+      MaterialPageRoute(builder: (context) => SignUpPage()),
+    );
+  }
+
+  void _onTapSignIn() async {
+    setState(() {
+      loader = true;
+    });
+    await AuthServices.handleSignIn(
+      _emailCTRL.text.toString(),
+      _passwordCTRL.text.toString(),
+      context,
+    );
+    _clearControllers();
+    setState(() {
+      loader = false;
+    });
+  }
+
+
+  void _onTapForgetPassword(){
+    Navigator.push(context, PageTransition(
+      child: ForgetPasswordPage(),
+      type: PageTransitionType.fade));
+  }
+  void _clearControllers() {
+    _emailCTRL.clear();
+    _passwordCTRL.clear();
+  }
+
+  @override
+  void dispose() {
+    _emailCTRL.dispose();
+    _passwordCTRL.dispose();
+    super.dispose();
+  }
+}
