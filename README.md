@@ -8,7 +8,7 @@ The application helps users manage daily expenses, track spending habits, visual
 
 ## 📱 Screenshots
 
-<img width="1920" height="1080" alt="Expense Tracker App (3)" src="https://github.com/user-attachments/assets/62c240fb-a539-48e4-a7bd-8172896e3f70" />
+<img width="1920" height="1080" alt="Expense Tracker App (5)" src="https://github.com/user-attachments/assets/6cf9a98d-06c6-4e7d-bbba-27fdd62cc8fa" />
 
 
 
@@ -28,6 +28,7 @@ The application helps users manage daily expenses, track spending habits, visual
 ### 💵 Expense Management
 - Add Expense
 - Delete Expense
+- Update Expense
 - View Expenses
 - Expense Categories
 - Date Selection
