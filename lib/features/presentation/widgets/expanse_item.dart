@@ -1,5 +1,6 @@
 import 'package:expanse_tracker_app/features/domain/expanse_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ExpanseItem extends StatelessWidget {
   const ExpanseItem({super.key, required this.expanse});
@@ -51,8 +52,8 @@ IconData get categoryIcon{
                 children: [
                   Text(
                     expanse.title,
-                    style: TextStyle(
-                      fontSize: 22,
+                    style: GoogleFonts.laila(
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                       
                     ),

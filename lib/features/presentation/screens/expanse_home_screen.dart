@@ -2,9 +2,11 @@ import 'package:expanse_tracker_app/core/constants/app_colors.dart';
 import 'package:expanse_tracker_app/application/services/auth_services.dart';
 import 'package:expanse_tracker_app/features/presentation/controller/expanse_controller.dart';
 import 'package:expanse_tracker_app/features/presentation/screens/splash_screen.dart';
+import 'package:expanse_tracker_app/features/presentation/widgets/chart.dart';
 import 'package:expanse_tracker_app/features/presentation/widgets/expanse_list.dart';
 import 'package:expanse_tracker_app/features/presentation/widgets/new_expanse.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ExpanseHomeScreen extends StatefulWidget {
   const ExpanseHomeScreen({super.key});
@@ -32,7 +34,10 @@ class _ExpanseHomeScreenState extends State<ExpanseHomeScreen> {
             backgroundColor: AppColors.appBackGroundColor,
             title: Text(
               "Expense Tracker",
-              style: TextStyle(color: Colors.white),
+              style: GoogleFonts.merriweather(color: Colors.white,
+              fontWeight: FontWeight.w900,
+
+              ),
             ),
             centerTitle: true,
             actions: [
@@ -44,6 +49,8 @@ class _ExpanseHomeScreenState extends State<ExpanseHomeScreen> {
           ),
           body: Column(
             children: [
+              Chart(expanses: controller.expanses),
+              
               Expanded(
                 child: ExpanseList(
                   expanses: controller.expanses,
@@ -55,7 +62,8 @@ class _ExpanseHomeScreenState extends State<ExpanseHomeScreen> {
 
           floatingActionButton: FloatingActionButton(
             onPressed:addExpanseOverlay,
-            backgroundColor: Colors.blue.shade100,
+            backgroundColor: Colors.blue.shade800,
+            foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(30),
             ),
