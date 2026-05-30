@@ -1,4 +1,5 @@
 import 'package:expanse_tracker_app/application/services/auth_services.dart';
+import 'package:expanse_tracker_app/core/constants/app_colors.dart';
 import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,7 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 30,),
                 CircleAvatar(
                   radius: 100,
                   backgroundImage: AssetImage('assets/splashScreen.png'),
@@ -32,7 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Text(
                   'Sign Up',
                   style: TextStyle(
-                    color: Colors.orange.shade800,
+                    color: Colors.blue.shade500,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -96,7 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.orange.shade800,
+                      backgroundColor: AppColors.elevatedButtonColor,
                       foregroundColor: Colors.white,
                     ),
                     child: Row(
@@ -118,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: loader
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.orange,
+                            color: Colors.blue,
                           ),
                         )
                       : ElevatedButton(
@@ -128,7 +130,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            backgroundColor: Colors.orange.shade800,
+                            backgroundColor: AppColors.elevatedButtonColor,
                             foregroundColor: Colors.white,
                           ),
                           child: Text('Sign Up'),
@@ -147,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       onPressed: _onTapSignIn,
                       child: Text(
                         'Sign In',
-                        style: TextStyle(color: Colors.orange.shade700),
+                        style: TextStyle(color: Colors.blue.shade500),
                       ),
                     ),
                   ],

@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Text(
                         item.title,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.splashScreenTitle,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
                           height: 1.1,
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Text(
                         item.subtitle,
                         style: TextStyle(
-                          color: AppColors.subTitleColor,
+                          color: AppColors.splashScreenSubTitle,
                           fontSize: 16,
                           height: 1.5,
                         ),
@@ -99,7 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
                             width: currentIndex == index ? 45 : 25,
                             decoration: BoxDecoration(
                               color: currentIndex == index
-                                  ? const Color(0xFFFF9B71)
+                                  ?  Colors.blue
                                   : Colors.grey.shade800,
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -114,7 +114,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           height: 60,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.grey.shade800,
+                              backgroundColor:AppColors.elevatedButtonColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadiusGeometry.circular(30),
                               ),

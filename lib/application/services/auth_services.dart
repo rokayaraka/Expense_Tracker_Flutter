@@ -17,7 +17,7 @@ class AuthServices {
     }
   }
 
-  static handleSignUp(
+  static Future<void> handleSignUp(
     String email,
     String password,
     BuildContext context,
@@ -59,7 +59,7 @@ class AuthServices {
   //   }
   // }
 
-  static handleSignIn(
+  static Future<void> handleSignIn(
     String email,
     String password,
     BuildContext context,
@@ -71,7 +71,7 @@ class AuthServices {
   static void showSnackBar(String massage, BuildContext context) {
     final snackBar = SnackBar(
       content: Text(massage, style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.orange.shade800,
+      backgroundColor: Colors.blue.shade600,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(seconds: 3),
     );

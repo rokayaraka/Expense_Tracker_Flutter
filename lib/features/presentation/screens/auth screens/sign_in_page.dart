@@ -1,6 +1,8 @@
 import 'package:expanse_tracker_app/application/services/auth_services.dart';
+import 'package:expanse_tracker_app/core/constants/app_colors.dart';
 import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/forget_passwrod_page.dart';
 import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/sign_up_page.dart';
+import 'package:expanse_tracker_app/features/presentation/screens/expanse_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -26,6 +28,7 @@ class _SigninPageState extends State<SigninPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 30,),
                 CircleAvatar(
                   radius: 100,
                   backgroundImage: AssetImage('assets/splashScreen.png'),
@@ -35,7 +38,7 @@ class _SigninPageState extends State<SigninPage> {
                 Text(
                   'Sign In',
                   style: TextStyle(
-                    color: Colors.orange.shade800,
+                    color: Colors.blue.shade500,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -94,14 +97,14 @@ class _SigninPageState extends State<SigninPage> {
                       child: Text(
                         'Forget Password?',
                         style: TextStyle(
-                          color: Colors.orange.shade800,
+                          color: Colors.blue.shade500,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -112,7 +115,7 @@ class _SigninPageState extends State<SigninPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.orange.shade800,
+                      backgroundColor: AppColors.elevatedButtonColor,
                       foregroundColor: Colors.white,
                     ),
                     child: Row(
@@ -134,7 +137,7 @@ class _SigninPageState extends State<SigninPage> {
                   child: loader
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.orange,
+                            color: Colors.blue,
                           ),
                         )
                       : ElevatedButton(
@@ -144,7 +147,7 @@ class _SigninPageState extends State<SigninPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            backgroundColor: Colors.orange.shade800,
+                            backgroundColor:  AppColors.elevatedButtonColor,
                             foregroundColor: Colors.white,
                           ),
                           child: Text('Sign In'),
@@ -163,7 +166,7 @@ class _SigninPageState extends State<SigninPage> {
                       onPressed: _onTapSignUp,
                       child: Text(
                         'Sign Up',
-                        style: TextStyle(color: Colors.orange.shade800),
+                        style: TextStyle(color: Colors.blue.shade500),
                       ),
                     ),
                   ],
@@ -196,6 +199,10 @@ class _SigninPageState extends State<SigninPage> {
     setState(() {
       loader = false;
     });
+     Navigator.push(
+      (context),
+      MaterialPageRoute(builder: (context) => ExpanseHomeScreen()),
+    );
   }
 
   void _onTapForgetPassword() {
