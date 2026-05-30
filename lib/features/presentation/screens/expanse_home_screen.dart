@@ -55,6 +55,7 @@ class _ExpanseHomeScreenState extends State<ExpanseHomeScreen> {
                 child: ExpanseList(
                   expanses: controller.expanses,
                   removeExpanse: controller.deleteExpanse,
+                  editExpanse: controller.updateExpanse,
                 ),
               ),
             ],

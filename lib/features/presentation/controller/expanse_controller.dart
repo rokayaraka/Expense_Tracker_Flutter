@@ -27,6 +27,16 @@ class ExpanseController extends ChangeNotifier {
     await repository.saveExpanses(expanses);
     notifyListeners();
   }
+
+  Future<void> updateExpanse(ExpanseEntity oldExpanse, ExpanseEntity updateExpanse)async{
+    final index = expanses.indexOf(oldExpanse);
+    if(index!=-1){
+      expanses[index]=updateExpanse;
+      await repository.saveExpanses(expanses);
+      notifyListeners();
+    }
+
+  }
     
   
 

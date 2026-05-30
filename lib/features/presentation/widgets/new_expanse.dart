@@ -2,8 +2,9 @@ import 'package:expanse_tracker_app/features/domain/expanse_entity.dart';
 import 'package:flutter/material.dart';
 
 class NewExpanse extends StatefulWidget {
-  const NewExpanse({super.key, required this.addExpanse});
+  const NewExpanse({super.key, required this.addExpanse, this.expanses});
 
+  final ExpanseEntity? expanses;
   final Future<void> Function(ExpanseEntity expanse) addExpanse;
 
   @override
@@ -17,6 +18,20 @@ class _NewExpanseState extends State<NewExpanse> {
   DateTime? _selectedDate = DateTime.now();
 
   Category? _selectedCategory = Category.food;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+    if(widget.expanses!=null){
+      _titleController.text=widget.expanses!.title;
+      _amountController.text=widget.expanses!.amount.toString();
+      _selectedCategory=widget.expanses!.category;
+      _selectedDate=widget.expanses!.date;
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
