@@ -2,6 +2,7 @@ import 'package:expanse_tracker_app/application/services/auth_services.dart';
 import 'package:expanse_tracker_app/core/constants/app_colors.dart';
 import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/sign_in_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -26,14 +27,23 @@ class _SignUpPageState extends State<SignUpPage> {
               children: [
                 SizedBox(height: 30,),
                 CircleAvatar(
-                  radius: 100,
-                  backgroundImage: AssetImage('assets/splashScreen.png'),
+                  radius: 60,
+                  backgroundImage: AssetImage("assets/MyXpense.png"),
                 ),
+                 Text("Expense Tracker",
+                 style: GoogleFonts.alice(
+                  color: Colors.white,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                 ),
+                 
+                 
+                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Text(
                   'Sign Up',
-                  style: TextStyle(
+                  style:  GoogleFonts.acme(
                     color: Colors.blue.shade500,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -136,7 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Text('Sign Up'),
                         ),
                 ),
-                // SizedBox(height: 20),
+                 SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

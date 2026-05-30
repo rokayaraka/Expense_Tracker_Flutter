@@ -38,6 +38,11 @@ class AuthServices {
     }
   }
 
+  static Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+    await _googleSignIn.signOut();
+  }
+
   // static Future<Map<String, dynamic>?> signInWithGoogle() async {
   //   try {
   //     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();

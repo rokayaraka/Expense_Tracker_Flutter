@@ -1,5 +1,7 @@
 import 'package:expanse_tracker_app/core/constants/app_colors.dart';
+import 'package:expanse_tracker_app/application/services/auth_services.dart';
 import 'package:expanse_tracker_app/features/presentation/controller/expanse_controller.dart';
+import 'package:expanse_tracker_app/features/presentation/screens/splash_screen.dart';
 import 'package:expanse_tracker_app/features/presentation/widgets/expanse_list.dart';
 import 'package:expanse_tracker_app/features/presentation/widgets/new_expanse.dart';
 import 'package:flutter/material.dart';
@@ -25,15 +27,19 @@ class _ExpanseHomeScreenState extends State<ExpanseHomeScreen> {
       animation: controller,
       builder: (context, child) {
         return Scaffold(
-         // backgroundColor: Colors.white54,
+          // backgroundColor: Colors.white54,
           appBar: AppBar(
             backgroundColor: AppColors.appBackGroundColor,
-            title: Text("Expense Tracker",
-            style: TextStyle(color: Colors.white),
+            title: Text(
+              "Expense Tracker",
+              style: TextStyle(color: Colors.white),
             ),
             centerTitle: true,
             actions: [
-              IconButton(onPressed: addExpanseOverlay, icon: Icon(Icons.add,color: Colors.white,)),
+              IconButton(
+                onPressed: _onTapLogOut,
+                icon: Icon(Icons.logout_outlined, color: Colors.white),
+              ),
             ],
           ),
           body: Column(
@@ -46,8 +52,27 @@ class _ExpanseHomeScreenState extends State<ExpanseHomeScreen> {
               ),
             ],
           ),
+
+          floatingActionButton: FloatingActionButton(
+            onPressed:addExpanseOverlay,
+            backgroundColor: Colors.blue.shade100,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(30),
+            ),
+            child: Icon(Icons.add, size: 23),
+          ),
         );
       },
+    );
+  }
+
+  void _onTapLogOut() async {
+    await AuthServices.signOut();
+    if (!mounted) return;
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const SplashScreen()),
+      (route) => false,
     );
   }
 

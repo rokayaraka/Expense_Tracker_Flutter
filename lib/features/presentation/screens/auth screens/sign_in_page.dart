@@ -4,6 +4,7 @@ import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens
 import 'package:expanse_tracker_app/features/presentation/screens/auth%20screens/sign_up_page.dart';
 import 'package:expanse_tracker_app/features/presentation/screens/expanse_home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SigninPage extends StatefulWidget {
@@ -30,15 +31,24 @@ class _SigninPageState extends State<SigninPage> {
               children: [
                 SizedBox(height: 30,),
                 CircleAvatar(
-                  radius: 100,
-                  backgroundImage: AssetImage('assets/splashScreen.png'),
+                  radius: 60,
+                  backgroundImage: AssetImage("assets/MyXpense.png"),
                 ),
+                 Text("Expense Tracker",
+                 style: GoogleFonts.alice(
+                  color: Colors.blue,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                 ),
+                 
+                 
+                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Text(
                   'Sign In',
-                  style: TextStyle(
-                    color: Colors.blue.shade500,
+                  style: GoogleFonts.acme(
+                    color: Colors.blue.shade100,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -153,7 +163,7 @@ class _SigninPageState extends State<SigninPage> {
                           child: Text('Sign In'),
                         ),
                 ),
-                // SizedBox(height: 20),
+                  SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -190,19 +200,24 @@ class _SigninPageState extends State<SigninPage> {
     setState(() {
       loader = true;
     });
-    await AuthServices.handleSignIn(
+    final message = await AuthServices.signInwithEmail(
       _emailCTRL.text.toString(),
       _passwordCTRL.text.toString(),
-      context,
     );
+    if (!mounted) return;
+    AuthServices.showSnackBar(message, context);
+    final signInSucceeded = !message.toLowerCase().startsWith('error');
     _clearControllers();
     setState(() {
       loader = false;
     });
-     Navigator.push(
-      (context),
-      MaterialPageRoute(builder: (context) => ExpanseHomeScreen()),
-    );
+    if (signInSucceeded) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const ExpanseHomeScreen()),
+        (route) => false,
+      );
+    }
   }
 
   void _onTapForgetPassword() {

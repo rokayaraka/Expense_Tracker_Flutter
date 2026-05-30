@@ -1,5 +1,6 @@
 import 'package:expanse_tracker_app/application/services/auth_services.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({super.key});
@@ -21,12 +22,23 @@ bool loader = false;
             padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
+                SizedBox(height: 50,),
                 Image.asset(
-                  'assets/forget_pass.jpg',
-                  height: 250,
-                  width: 250,
+                  'assets/6357068.png',
+                  height: 160,
+                  width: 160,
                   fit: BoxFit.cover,
                 ),
+                
+                 Text("Forget Password?",
+                 style: GoogleFonts.alice(
+                  color: Colors.blue,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                 ),
+                 
+                 
+                 ),
                 SizedBox(height: 30),
 
                 TextFormField(
@@ -55,7 +67,7 @@ bool loader = false;
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Colors.blue.shade600,
                       foregroundColor: Colors.white,
                     ),
                     child: Text('Send Password reset Email'),
@@ -83,6 +95,7 @@ bool loader = false;
         loader=false;
       });
     }
+    Navigator.pop(context);
   }
 
   bool isValidEmail(String email) {
